@@ -10,6 +10,7 @@ import {
   loadSections,
   loadCSS,
 } from './aem.js';
+import { runExperimentation } from './experiment-loader.js';
 import {
   loadCommerceEager,
   loadCommerceLazy,
@@ -21,6 +22,14 @@ import {
   IS_UE,
   IS_DA,
 } from './commerce.js';
+
+const experimentationConfig = {
+  prodHost: 'main--univar--kmanns.aem.live',
+  audiences: {
+    mobile: () => window.innerWidth < 600,
+    desktop: () => window.innerWidth >= 600,
+  },
+};
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -142,6 +151,8 @@ export function decorateMain(main) {
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
+
+  await runExperimentation(doc, experimentationConfig);
 
   const main = doc.querySelector('main');
   if (main) {

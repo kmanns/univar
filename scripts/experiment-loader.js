@@ -1,0 +1,36 @@
+/**
+ * Checks if experimentation is enabled on the current page.
+ * @returns {boolean}
+ */
+const isExperimentationEnabled = () => document.head.querySelector('[name^="experiment"],[name^="campaign-"],[name^="audience-"],[property^="campaign:"],[property^="audience:"]')
+  || [...document.querySelectorAll('.section-metadata div')].some((d) => d.textContent.match(/Experiment|Campaign|Audience/i));
+
+/**
+ * Loads and runs the experimentation plugin (eager phase).
+ * @param {Document} document
+ * @param {Object} config
+ * @returns {Promise<void>}
+ */
+export async function runExperimentation(document, config) {
+  if (!isExperimentationEnabled()) {
+    window.addEventListener('message', async (event) => {
+      if (event.data?.type === 'hlx:experimentation-get-config') {
+        event.source.postMessage({
+          type: 'hlx:experimentation-config',
+          config: { experiments: [], audiences: [], campaigns: [] },
+          source: 'no-experiments',
+        }, '*');
+      }
+    });
+    return null;
+  }
+
+  try {
+    const { loadEager } = await import('../plugins/experimentation/src/index.js');
+    return loadEager(document, config);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to load experimentation module (eager):', error);
+    return null;
+  }
+}
