@@ -14,13 +14,21 @@
   justify-content: center;
 }
 
+/* Must NOT be position:relative — picture uses position:absolute inset:0
+   relative to .hero, not this inner wrapper */
 .hero > div {
-  position: relative;
+  position: static;
   z-index: 1;
   width: 100%;
   max-width: 1264px;
   margin: 0 auto;
   text-align: center;
+}
+
+/* Text content sits above the background image */
+.hero > div > div:last-child {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
@@ -61,7 +69,7 @@
   border-color: var(--color-univar-orange-dark, #c46000);
 }
 
-/* Background image support */
+/* Background image — positioned relative to .hero (nearest positioned ancestor) */
 .hero picture {
   position: absolute;
   z-index: 0;
