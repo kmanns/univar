@@ -1,91 +1,21 @@
-footer {
-    background-color: var(--color-neutral-100);
-    font: var(--type-body-2-default-font);
-    letter-spacing: var(--type-body-2-default-letter-spacing);
-}
-
-footer .footer > div {
-    margin: auto;
-    max-width: 1200px;
-    padding: 40px 24px 24px;
-}
-
-footer .footer p {
-    margin: 0;
-}
-
-.storeview-switcher-button {
-    background: transparent;
-    padding-left: 0;
-}
-
-.storeview-modal-storeview-title {
-    margin-bottom: var(--spacing-xxbig);
-    padding-inline-start: var(--spacing-xbig);
-}
-
-.modal .close-button {
-    top: 40px !important;
-    right: 40px !important;
-}
-
-.storeview-single-store {
-    list-style-type: none;
-}
-
-.storeview-selection .storeview-multiple-stores {
-    list-style-image: url("../../icons/chevron-right.svg");
-    list-style-position: inside;
-}
-
-.storeview-selection > li {
-    margin-bottom: var(--spacing-small);
-}
-
-.storeview-multiple-stores > ul {
-    position: relative;
-    width: 100%;
-}
-
-.storeview-multiple-stores > ul > li {
-    list-style: none;
-    display: none;
-}
-
-.storeview-multiple-stores[aria-expanded="true"] {
-    list-style-image: url("../../icons/chevron-down.svg");
-}
-
-.storeview-multiple-stores[aria-expanded="true"] > ul {
-    padding-left: 0;
-}
-
-.storeview-multiple-stores[aria-expanded="true"] > ul > li {
-    display: block;
-    list-style-type: none;
-    margin-bottom: var(--spacing-small);
-}
-
-@media (min-width: 900px) {
-    footer .footer > div {
-        padding: 40px 32px 24px;
-    }
-}
-
 /* ============================================================
-   Univar Solutions footer — dark gray theme
+   Univar Solutions Footer
+   Reference: https://www.univarsolutions.com/
+   BG: #333333, Links: #e87200 (orange)
    ============================================================ */
+
 footer {
   background-color: var(--color-univar-gray-dark, #333333);
-  color: #ccc;
+  font: var(--type-body-2-default-font);
+  letter-spacing: var(--type-body-2-default-letter-spacing);
 }
 
 footer .footer {
   background-color: var(--color-univar-gray-dark, #333333);
-  color: #ccc;
+  color: #aaa;
 }
 
-/* Multi-column grid layout for the main footer content */
+/* ——— Main grid layout ——— */
 footer .footer > div {
   display: grid;
   grid-template-columns: 1fr;
@@ -95,14 +25,7 @@ footer .footer > div {
   padding: var(--spacing-xlarge) var(--spacing-medium);
 }
 
-/* Override the default background */
-footer .footer p {
-  color: #999;
-  font-size: 1.3rem;
-  line-height: 1.6;
-  margin-bottom: var(--spacing-xsmall);
-}
-
+/* ——— Column headings (ESG Sustainability, Company, Get in Touch) ——— */
 footer .footer h2,
 footer .footer h3,
 footer .footer h4 {
@@ -110,12 +33,13 @@ footer .footer h4 {
   font-size: 1.3rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: var(--spacing-small);
+  letter-spacing: 0.1em;
+  margin: 0 0 var(--spacing-small) 0;
   padding-bottom: var(--spacing-xsmall);
   border-bottom: 1px solid #555;
 }
 
+/* ——— Links ——— */
 footer .footer a {
   color: var(--color-univar-orange, #e87200);
   text-decoration: none;
@@ -129,6 +53,7 @@ footer .footer a:hover {
   text-decoration: underline;
 }
 
+/* ——— Lists ——— */
 footer .footer ul {
   list-style: none;
   padding: 0;
@@ -139,49 +64,68 @@ footer .footer li {
   line-height: 1;
 }
 
-/* First div: logo + copyright + social icons */
-footer .footer > div > div:first-child p:first-child img {
-  filter: brightness(0) invert(1);
-  max-width: 160px;
-  height: auto;
+/* ——— Paragraph text (copyright etc) ——— */
+footer .footer p {
+  color: #888;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 0 0 var(--spacing-xsmall) 0;
+}
+
+/* ——— First column: logo + copyright + social icons ——— */
+footer .footer > div > div:first-child img:first-of-type {
+  max-height: 40px;
+  width: auto;
   display: block;
+  filter: brightness(0) invert(1);
   margin-bottom: var(--spacing-medium);
 }
 
-/* Social icons row */
+/* Social icons list */
 footer .footer > div > div:first-child ul {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-small);
   margin-top: var(--spacing-medium);
-  margin-bottom: var(--spacing-medium);
+  padding: 0;
 }
 
 footer .footer > div > div:first-child li {
   display: flex;
+  align-items: center;
 }
 
 footer .footer > div > div:first-child a {
-  color: #999;
+  color: #888;
   line-height: 1;
+  display: flex;
+  align-items: center;
 }
 
 footer .footer > div > div:first-child img {
   width: 24px;
   height: 24px;
   filter: brightness(0) invert(1);
-  opacity: 0.7;
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
 }
 
 footer .footer > div > div:first-child a:hover img {
   opacity: 1;
 }
 
-/* Last div: policy links — horizontal bar */
+/* ——— Last column: policy links bar ——— */
+footer .footer > div > div:last-child {
+  border-top: 1px solid #444;
+  padding-top: var(--spacing-medium);
+  margin-top: 0;
+}
+
 footer .footer > div > div:last-child ul {
   display: flex;
   flex-wrap: wrap;
   gap: 0;
+  align-items: center;
 }
 
 footer .footer > div > div:last-child li {
@@ -192,19 +136,75 @@ footer .footer > div > div:last-child li {
 footer .footer > div > div:last-child li:not(:last-child)::after {
   content: '|';
   color: #555;
-  padding: 0 var(--spacing-xsmall);
+  padding: 0 8px;
+  font-size: 1.1rem;
 }
 
 footer .footer > div > div:last-child a {
   color: #888;
   font-size: 1.2rem;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 footer .footer > div > div:last-child a:hover {
   color: var(--color-neutral-50);
+  text-decoration: none;
 }
 
+/* Store-switcher components (pre-existing) */
+.storeview-switcher-button {
+  background: transparent;
+  padding-left: 0;
+}
+
+.storeview-modal-storeview-title {
+  margin-bottom: var(--spacing-xxbig);
+  padding-inline-start: var(--spacing-xbig);
+}
+
+.modal .close-button {
+  top: 40px !important;
+  right: 40px !important;
+}
+
+.storeview-single-store {
+  list-style-type: none;
+}
+
+.storeview-selection .storeview-multiple-stores {
+  list-style-image: url("../../icons/chevron-right.svg");
+  list-style-position: inside;
+}
+
+.storeview-selection > li {
+  margin-bottom: var(--spacing-small);
+}
+
+.storeview-multiple-stores > ul {
+  position: relative;
+  width: 100%;
+}
+
+.storeview-multiple-stores > ul > li {
+  list-style: none;
+  display: none;
+}
+
+.storeview-multiple-stores[aria-expanded="true"] {
+  list-style-image: url("../../icons/chevron-down.svg");
+}
+
+.storeview-multiple-stores[aria-expanded="true"] > ul {
+  padding-left: 0;
+}
+
+.storeview-multiple-stores[aria-expanded="true"] > ul > li {
+  display: block;
+  list-style-type: none;
+  margin-bottom: var(--spacing-small);
+}
+
+/* ——— Responsive columns ——— */
 @media (min-width: 600px) {
   footer .footer > div {
     grid-template-columns: 1fr 1fr;
@@ -216,13 +216,11 @@ footer .footer > div > div:last-child a:hover {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     padding: var(--spacing-xlarge) var(--spacing-big);
     gap: var(--spacing-xlarge);
+    align-items: start;
   }
 
-  /* Last div (policy links) spans all columns */
+  /* Policy bar spans full width */
   footer .footer > div > div:last-child {
     grid-column: 1 / -1;
-    border-top: 1px solid #555;
-    padding-top: var(--spacing-medium);
-    margin-top: var(--spacing-small);
   }
 }

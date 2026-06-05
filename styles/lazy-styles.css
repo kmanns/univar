@@ -1,51 +1,37 @@
-/* Univar Solutions — global lazy-loaded styles */
-/* Primary brand color: #e87200 (orange) */
+/* Univar Solutions — global lazy-loaded styles
+   Reference: https://www.univarsolutions.com/
+   Primary: #e87200 (orange)
+   Utility bar: #6e716e
+   Footer: #333333
+   Body text: #24282a
+*/
 
 /* ============================================================
-   Global body / text
+   Body / global text
    ============================================================ */
 body {
   color: var(--color-univar-body, #24282a);
+  background-color: var(--color-neutral-50);
 }
 
 /* ============================================================
-   Buttons — Univar orange primary
+   Typography — section headings
    ============================================================ */
-a.button,
-button {
-  background-color: var(--color-univar-orange, #e87200);
-  border-color: var(--color-univar-orange, #e87200);
-  color: var(--color-neutral-50);
-  font-weight: 600;
-  border-radius: 2px;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+main h2 {
+  color: var(--color-univar-body, #24282a);
+  font-weight: 300;
 }
 
-a.button:hover,
-button:hover {
-  background-color: var(--color-univar-orange-dark, #c46000);
-  border-color: var(--color-univar-orange-dark, #c46000);
-  color: var(--color-neutral-50);
-}
-
-a.button.secondary,
-button.secondary {
-  background-color: transparent;
-  border-color: var(--color-univar-orange, #e87200);
-  color: var(--color-univar-orange, #e87200);
-}
-
-a.button.secondary:hover,
-button.secondary:hover {
-  background-color: var(--color-univar-orange, #e87200);
-  color: var(--color-neutral-50);
+main h3 {
+  color: var(--color-univar-body, #24282a);
 }
 
 /* ============================================================
    Links
    ============================================================ */
-main a:not(.button) {
+main a:not(.button):not(.nav-drop):not(.nav-hamburger) {
   color: var(--color-univar-orange, #e87200);
+  text-decoration: none;
 }
 
 main a:not(.button):hover {
@@ -54,11 +40,48 @@ main a:not(.button):hover {
 }
 
 /* ============================================================
-   Header / Nav
+   Buttons — Univar orange, pill shape
    ============================================================ */
+a.button,
+button.button {
+  background-color: var(--color-univar-orange, #e87200);
+  border-color: var(--color-univar-orange, #e87200);
+  color: var(--color-neutral-50) !important;
+  font-weight: 700;
+  border-radius: 30px;
+  padding: 12px 28px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  text-decoration: none;
+}
+
+a.button:hover,
+button.button:hover {
+  background-color: var(--color-univar-orange-dark, #c46000);
+  border-color: var(--color-univar-orange-dark, #c46000);
+  color: var(--color-neutral-50) !important;
+  text-decoration: none;
+}
+
+/* Secondary / ghost buttons */
+a.button.secondary {
+  background-color: transparent;
+  border-color: var(--color-neutral-50);
+  color: var(--color-neutral-50) !important;
+}
+
+a.button.secondary:hover {
+  background-color: var(--color-neutral-50);
+  color: var(--color-univar-orange, #e87200) !important;
+}
+
+/* ============================================================
+   Header — match reference 3-layer structure
+   ============================================================ */
+
+/* Nav wrapper: white bg with shadow */
 header .nav-wrapper {
   background-color: var(--color-neutral-50);
-  border-bottom: 1px solid var(--color-neutral-300);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
 }
 
 @media (min-width: 900px) {
@@ -66,52 +89,96 @@ header .nav-wrapper {
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
   }
 }
 
-header .nav-brand a {
-  font-weight: 700;
-  font-size: 1.8rem;
-  color: var(--color-univar-body, #24282a);
+/* Brand area: dark background like the reference header row */
+header nav .nav-brand {
+  background-color: #000;
+  padding: 12px 0;
 }
 
-header .nav-sections ul > li > a,
-header .nav-sections ul > li > .nav-drop {
+header nav .nav-brand a {
+  color: var(--color-neutral-50);
+  font-weight: 700;
+}
+
+header nav .nav-brand img {
+  max-height: 40px;
+  width: auto;
+  display: block;
+}
+
+/* Nav sections: white bg, dark text */
+header nav .nav-sections {
+  background-color: var(--color-neutral-50);
+}
+
+header nav .nav-sections ul > li > a,
+header nav .nav-sections ul > li > .nav-drop {
   color: var(--color-univar-body, #24282a);
   font-weight: 500;
+  font-size: 1.4rem;
 }
 
-header .nav-sections ul > li > a:hover,
-header .nav-sections ul > li[aria-expanded="true"] > a,
-header .nav-sections ul > li > .nav-drop:hover {
+header nav .nav-sections ul > li > a:hover,
+header nav .nav-sections ul > li[aria-expanded="true"] > a,
+header nav .nav-sections ul > li > .nav-drop:hover {
   color: var(--color-univar-orange, #e87200);
 }
 
-/* ============================================================
-   Hero block — search banner
-   ============================================================ */
-.hero,
-.section.hero-section .hero {
-  background-color: #1a1a1a;
+/* Sign In / auth button in nav */
+header .nav-wrapper button.nav-sign-in,
+header .nav-wrapper .nav-sign-in-link {
+  background-color: var(--color-univar-orange, #e87200);
   color: var(--color-neutral-50);
-  min-height: 220px;
+  border-radius: 6px;
+  font-weight: 700;
+  padding: 6px 12px;
+}
+
+/* ============================================================
+   Hero block — dark search banner
+   ============================================================ */
+.hero {
+  background-color: #000;
+  color: var(--color-neutral-50);
+  min-height: 200px;
   padding: 60px 24px;
 }
 
-.hero h1,
-.hero h2 {
+.hero h1 {
   color: var(--color-neutral-50);
+  font-size: 3.6rem;
+  font-weight: 300;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto var(--spacing-medium);
+}
+
+.hero h2,
+.hero h3 {
+  color: var(--color-neutral-50);
+  text-align: center;
 }
 
 .hero p {
-  color: rgb(255 255 255 / 85%);
+  color: rgb(255 255 255 / 80%);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--spacing-medium);
 }
 
 .hero a.button {
   background-color: var(--color-univar-orange, #e87200);
   border-color: var(--color-univar-orange, #e87200);
-  color: var(--color-neutral-50);
+  color: var(--color-neutral-50) !important;
+  border-radius: 999px;
+  padding: 14px 40px;
+  font-weight: 700;
+  font-size: 1.6rem;
+  display: inline-block;
+  margin-top: var(--spacing-small);
 }
 
 .hero a.button:hover {
@@ -119,37 +186,77 @@ header .nav-sections ul > li > .nav-drop:hover {
   border-color: var(--color-univar-orange-dark, #c46000);
 }
 
+/* Picture/background-image in hero */
+.hero picture {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+.hero picture + * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    padding: 80px 32px;
+    min-height: 280px;
+  }
+
+  .hero h1 {
+    font-size: 4.8rem;
+  }
+}
+
 /* ============================================================
-   Category grid section
+   Category section — white bg, section heading centered
    ============================================================ */
 .section.category-section {
-  background-color: #f7f7f7;
+  background-color: var(--color-neutral-50);
   padding: var(--spacing-big) 0;
 }
 
 .section.category-section h2 {
   text-align: center;
   color: var(--color-univar-body, #24282a);
+  font-weight: 300;
   margin-bottom: var(--spacing-big);
   padding: 0 var(--spacing-medium);
-  font: var(--type-display-3-font);
-  letter-spacing: var(--type-display-3-letter-spacing);
 }
 
 /* ============================================================
-   Content teaser sections
+   Content teaser sections — alternating white / light gray
    ============================================================ */
 .section.about-section {
-  background-color: #f7f7f7;
+  background-color: var(--color-neutral-100);
 }
 
 .section.sustainability-section {
-  background-color: #f0f4f0;
+  background-color: var(--color-neutral-100);
+}
+
+/* Industry accent color: light orange tint on cards */
+.cards .card-item {
+  background-color: #fcf2e8;
+  border-radius: 4px;
 }
 
 /* ============================================================
-   Footer — dark gray (#333) background
+   Footer — dark gray #333 with orange links
    ============================================================ */
+footer {
+  background-color: var(--color-univar-gray-dark, #333333);
+}
+
 footer .footer {
   background-color: var(--color-univar-gray-dark, #333333);
   color: #ccc;
@@ -159,20 +266,22 @@ footer .footer h2,
 footer .footer h3,
 footer .footer h4 {
   color: var(--color-neutral-50);
-  font: var(--type-body-1-strong-font);
-  letter-spacing: var(--type-body-1-strong-letter-spacing);
-  text-transform: uppercase;
   font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   margin-bottom: var(--spacing-small);
   padding-bottom: var(--spacing-xsmall);
   border-bottom: 1px solid #555;
+  margin-top: 0;
 }
 
 footer .footer a {
   color: var(--color-univar-orange, #e87200);
   text-decoration: none;
-  font-size: 1.4rem;
-  line-height: 2;
+  font-size: 1.3rem;
+  line-height: 2.2;
+  display: inline-block;
 }
 
 footer .footer a:hover {
@@ -181,9 +290,10 @@ footer .footer a:hover {
 }
 
 footer .footer p {
-  color: #999;
+  color: #aaa;
   font-size: 1.2rem;
   line-height: 1.6;
+  margin-bottom: var(--spacing-xsmall);
 }
 
 footer .footer ul {
@@ -193,75 +303,15 @@ footer .footer ul {
 }
 
 footer .footer li {
-  line-height: 2;
-}
-
-/* Footer logo area */
-footer .footer .footer-brand {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-medium);
-  margin-bottom: var(--spacing-medium);
-}
-
-/* Social icons in footer */
-footer .footer .social-links {
-  display: flex;
-  gap: var(--spacing-small);
-  margin: var(--spacing-medium) 0;
-}
-
-footer .footer .social-links img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1);
-  opacity: 0.7;
-}
-
-footer .footer .social-links a:hover img {
-  opacity: 1;
-}
-
-/* Footer bottom bar (policy links) */
-footer .footer .footer-bottom,
-footer .footer > div:last-child {
-  border-top: 1px solid #555;
-  padding-top: var(--spacing-medium);
-  margin-top: var(--spacing-big);
-}
-
-footer .footer .footer-bottom a,
-footer .footer > div:last-child a {
-  color: #999;
-  font-size: 1.2rem;
-}
-
-footer .footer .footer-bottom a:hover,
-footer .footer > div:last-child a:hover {
-  color: var(--color-neutral-50);
+  line-height: 1;
 }
 
 /* ============================================================
-   Footer block layout (multi-column)
+   Footer back-to-top (if rendered)
    ============================================================ */
-footer .footer > div {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-big);
-  max-width: 1264px;
-  margin: 0 auto;
-  padding: var(--spacing-xlarge) var(--spacing-medium);
-}
-
-@media (min-width: 600px) {
-  footer .footer > div {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 900px) {
-  footer .footer > div {
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    padding: var(--spacing-xlarge) var(--spacing-big);
-  }
+footer .back-to-top,
+.back-to-top button {
+  background-color: var(--color-univar-orange, #e87200);
+  color: var(--color-neutral-50);
+  border-radius: 50%;
 }

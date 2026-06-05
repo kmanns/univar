@@ -7,30 +7,40 @@
   position: relative;
   padding: 60px 24px;
   min-height: 200px;
-  background-color: #1a1a1a;
+  background-color: #000;
   color: var(--color-neutral-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero > div {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1264px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero h1 {
-  max-width: 900px;
-  margin: 0 auto var(--spacing-medium);
   color: var(--color-neutral-50);
-  font: var(--type-display-2-font);
-  letter-spacing: var(--type-display-2-letter-spacing);
-  text-align: center;
+  font-size: 3.6rem;
+  line-height: 1.2;
+  font-weight: 300;
+  margin: 0 auto var(--spacing-medium);
+  max-width: 900px;
 }
 
 .hero h2,
 .hero h3 {
   color: var(--color-neutral-50);
-  text-align: center;
 }
 
 .hero p {
+  color: rgb(255 255 255 / 80%);
   max-width: 700px;
   margin: 0 auto var(--spacing-medium);
-  color: rgb(255 255 255 / 80%);
-  text-align: center;
 }
 
 .hero a.button {
@@ -38,10 +48,12 @@
   background-color: var(--color-univar-orange, #e87200);
   border-color: var(--color-univar-orange, #e87200);
   color: var(--color-neutral-50);
-  font-weight: 600;
+  font-weight: 700;
   padding: 14px 40px;
-  border-radius: 2px;
+  border-radius: 999px;
   font-size: 1.6rem;
+  margin-top: var(--spacing-small);
+  transition: background-color 0.15s ease;
 }
 
 .hero a.button:hover {
@@ -49,42 +61,26 @@
   border-color: var(--color-univar-orange-dark, #c46000);
 }
 
-/* With background image */
+/* Background image support */
 .hero picture {
   position: absolute;
   z-index: 0;
   inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
 }
 
-.hero picture ~ * {
-  position: relative;
-  z-index: 1;
-}
-
-.hero img {
+.hero picture img {
   object-fit: cover;
   width: 100%;
   height: 100%;
-}
-
-/* Center the content vertically when there's a background image */
-.hero > div {
-  position: relative;
-  z-index: 1;
-  max-width: 1264px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
 @media (min-width: 900px) {
   .hero {
     padding: 80px 32px;
     min-height: 280px;
+  }
+
+  .hero h1 {
+    font-size: 4.8rem;
   }
 }
