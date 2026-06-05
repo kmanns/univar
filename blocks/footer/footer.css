@@ -71,3 +71,158 @@ footer .footer p {
         padding: 40px 32px 24px;
     }
 }
+
+/* ============================================================
+   Univar Solutions footer — dark gray theme
+   ============================================================ */
+footer {
+  background-color: var(--color-univar-gray-dark, #333333);
+  color: #ccc;
+}
+
+footer .footer {
+  background-color: var(--color-univar-gray-dark, #333333);
+  color: #ccc;
+}
+
+/* Multi-column grid layout for the main footer content */
+footer .footer > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-big);
+  max-width: 1264px;
+  margin: 0 auto;
+  padding: var(--spacing-xlarge) var(--spacing-medium);
+}
+
+/* Override the default background */
+footer .footer p {
+  color: #999;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-xsmall);
+}
+
+footer .footer h2,
+footer .footer h3,
+footer .footer h4 {
+  color: var(--color-neutral-50);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--spacing-small);
+  padding-bottom: var(--spacing-xsmall);
+  border-bottom: 1px solid #555;
+}
+
+footer .footer a {
+  color: var(--color-univar-orange, #e87200);
+  text-decoration: none;
+  font-size: 1.3rem;
+  line-height: 2.2;
+  display: inline-block;
+}
+
+footer .footer a:hover {
+  color: var(--color-univar-orange-light, #f5a54a);
+  text-decoration: underline;
+}
+
+footer .footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer .footer li {
+  line-height: 1;
+}
+
+/* First div: logo + copyright + social icons */
+footer .footer > div > div:first-child p:first-child img {
+  filter: brightness(0) invert(1);
+  max-width: 160px;
+  height: auto;
+  display: block;
+  margin-bottom: var(--spacing-medium);
+}
+
+/* Social icons row */
+footer .footer > div > div:first-child ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-small);
+  margin-top: var(--spacing-medium);
+  margin-bottom: var(--spacing-medium);
+}
+
+footer .footer > div > div:first-child li {
+  display: flex;
+}
+
+footer .footer > div > div:first-child a {
+  color: #999;
+  line-height: 1;
+}
+
+footer .footer > div > div:first-child img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+}
+
+footer .footer > div > div:first-child a:hover img {
+  opacity: 1;
+}
+
+/* Last div: policy links — horizontal bar */
+footer .footer > div > div:last-child ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+footer .footer > div > div:last-child li {
+  display: flex;
+  align-items: center;
+}
+
+footer .footer > div > div:last-child li:not(:last-child)::after {
+  content: '|';
+  color: #555;
+  padding: 0 var(--spacing-xsmall);
+}
+
+footer .footer > div > div:last-child a {
+  color: #888;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+footer .footer > div > div:last-child a:hover {
+  color: var(--color-neutral-50);
+}
+
+@media (min-width: 600px) {
+  footer .footer > div {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  footer .footer > div {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: var(--spacing-xlarge) var(--spacing-big);
+    gap: var(--spacing-xlarge);
+  }
+
+  /* Last div (policy links) spans all columns */
+  footer .footer > div > div:last-child {
+    grid-column: 1 / -1;
+    border-top: 1px solid #555;
+    padding-top: var(--spacing-medium);
+    margin-top: var(--spacing-small);
+  }
+}

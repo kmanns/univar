@@ -1,84 +1,267 @@
-/* add global styles that can be loaded post LCP here */
+/* Univar Solutions — global lazy-loaded styles */
+/* Primary brand color: #e87200 (orange) */
 
-/* Univar Solutions - Lazy loaded styles */
+/* ============================================================
+   Global body / text
+   ============================================================ */
+body {
+  color: var(--color-univar-body, #24282a);
+}
 
-/* Hero banner - Univar blue background */
-.section.hero-banner {
-  background-color: var(--color-univar-blue);
+/* ============================================================
+   Buttons — Univar orange primary
+   ============================================================ */
+a.button,
+button {
+  background-color: var(--color-univar-orange, #e87200);
+  border-color: var(--color-univar-orange, #e87200);
+  color: var(--color-neutral-50);
+  font-weight: 600;
+  border-radius: 2px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+a.button:hover,
+button:hover {
+  background-color: var(--color-univar-orange-dark, #c46000);
+  border-color: var(--color-univar-orange-dark, #c46000);
   color: var(--color-neutral-50);
 }
 
-.section.hero-banner h1,
-.section.hero-banner h2 {
+a.button.secondary,
+button.secondary {
+  background-color: transparent;
+  border-color: var(--color-univar-orange, #e87200);
+  color: var(--color-univar-orange, #e87200);
+}
+
+a.button.secondary:hover,
+button.secondary:hover {
+  background-color: var(--color-univar-orange, #e87200);
   color: var(--color-neutral-50);
 }
 
-/* Section heading styles */
-main h2 {
-  color: var(--color-univar-blue);
+/* ============================================================
+   Links
+   ============================================================ */
+main a:not(.button) {
+  color: var(--color-univar-orange, #e87200);
 }
 
-/* Button overrides for Univar brand */
-a.button.primary,
-button.primary {
-  background-color: var(--color-univar-blue);
-  border-color: var(--color-univar-blue);
+main a:not(.button):hover {
+  color: var(--color-univar-orange-dark, #c46000);
+  text-decoration: underline;
 }
 
-a.button.primary:hover,
-button.primary:hover {
-  background-color: var(--color-univar-navy);
-  border-color: var(--color-univar-navy);
+/* ============================================================
+   Header / Nav
+   ============================================================ */
+header .nav-wrapper {
+  background-color: var(--color-neutral-50);
+  border-bottom: 1px solid var(--color-neutral-300);
 }
 
-/* Footer section background */
-footer .footer {
-  background-color: var(--color-univar-navy);
-  color: var(--color-neutral-300);
-}
-
-footer .footer h2,
-footer .footer h3 {
-  color: var(--color-neutral-50);
-}
-
-footer .footer a {
-  color: var(--color-neutral-400);
-}
-
-footer .footer a:hover {
-  color: var(--color-neutral-50);
-}
-
-/* Category section */
-.section.category-section {
-  background-color: var(--color-neutral-100);
-  padding: var(--spacing-big) 0;
-}
-
-/* Industries section */
-.section.industries-section {
-  padding: var(--spacing-large) 0;
-}
-
-.section.industries-section h2 {
-  text-align: center;
-  font: var(--type-display-3-font);
-  letter-spacing: var(--type-display-3-letter-spacing);
-  color: var(--color-univar-blue);
-  margin-bottom: var(--spacing-big);
-}
-
-/* Sustainability section */
-.section.sustainability-section {
-  background-color: var(--color-neutral-100);
-}
-
-/* Nav - Univar sticky header */
 @media (min-width: 900px) {
   header .nav-wrapper {
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+  }
+}
+
+header .nav-brand a {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--color-univar-body, #24282a);
+}
+
+header .nav-sections ul > li > a,
+header .nav-sections ul > li > .nav-drop {
+  color: var(--color-univar-body, #24282a);
+  font-weight: 500;
+}
+
+header .nav-sections ul > li > a:hover,
+header .nav-sections ul > li[aria-expanded="true"] > a,
+header .nav-sections ul > li > .nav-drop:hover {
+  color: var(--color-univar-orange, #e87200);
+}
+
+/* ============================================================
+   Hero block — search banner
+   ============================================================ */
+.hero,
+.section.hero-section .hero {
+  background-color: #1a1a1a;
+  color: var(--color-neutral-50);
+  min-height: 220px;
+  padding: 60px 24px;
+}
+
+.hero h1,
+.hero h2 {
+  color: var(--color-neutral-50);
+}
+
+.hero p {
+  color: rgb(255 255 255 / 85%);
+}
+
+.hero a.button {
+  background-color: var(--color-univar-orange, #e87200);
+  border-color: var(--color-univar-orange, #e87200);
+  color: var(--color-neutral-50);
+}
+
+.hero a.button:hover {
+  background-color: var(--color-univar-orange-dark, #c46000);
+  border-color: var(--color-univar-orange-dark, #c46000);
+}
+
+/* ============================================================
+   Category grid section
+   ============================================================ */
+.section.category-section {
+  background-color: #f7f7f7;
+  padding: var(--spacing-big) 0;
+}
+
+.section.category-section h2 {
+  text-align: center;
+  color: var(--color-univar-body, #24282a);
+  margin-bottom: var(--spacing-big);
+  padding: 0 var(--spacing-medium);
+  font: var(--type-display-3-font);
+  letter-spacing: var(--type-display-3-letter-spacing);
+}
+
+/* ============================================================
+   Content teaser sections
+   ============================================================ */
+.section.about-section {
+  background-color: #f7f7f7;
+}
+
+.section.sustainability-section {
+  background-color: #f0f4f0;
+}
+
+/* ============================================================
+   Footer — dark gray (#333) background
+   ============================================================ */
+footer .footer {
+  background-color: var(--color-univar-gray-dark, #333333);
+  color: #ccc;
+}
+
+footer .footer h2,
+footer .footer h3,
+footer .footer h4 {
+  color: var(--color-neutral-50);
+  font: var(--type-body-1-strong-font);
+  letter-spacing: var(--type-body-1-strong-letter-spacing);
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  margin-bottom: var(--spacing-small);
+  padding-bottom: var(--spacing-xsmall);
+  border-bottom: 1px solid #555;
+}
+
+footer .footer a {
+  color: var(--color-univar-orange, #e87200);
+  text-decoration: none;
+  font-size: 1.4rem;
+  line-height: 2;
+}
+
+footer .footer a:hover {
+  color: var(--color-univar-orange-light, #f5a54a);
+  text-decoration: underline;
+}
+
+footer .footer p {
+  color: #999;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+footer .footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer .footer li {
+  line-height: 2;
+}
+
+/* Footer logo area */
+footer .footer .footer-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-medium);
+  margin-bottom: var(--spacing-medium);
+}
+
+/* Social icons in footer */
+footer .footer .social-links {
+  display: flex;
+  gap: var(--spacing-small);
+  margin: var(--spacing-medium) 0;
+}
+
+footer .footer .social-links img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+}
+
+footer .footer .social-links a:hover img {
+  opacity: 1;
+}
+
+/* Footer bottom bar (policy links) */
+footer .footer .footer-bottom,
+footer .footer > div:last-child {
+  border-top: 1px solid #555;
+  padding-top: var(--spacing-medium);
+  margin-top: var(--spacing-big);
+}
+
+footer .footer .footer-bottom a,
+footer .footer > div:last-child a {
+  color: #999;
+  font-size: 1.2rem;
+}
+
+footer .footer .footer-bottom a:hover,
+footer .footer > div:last-child a:hover {
+  color: var(--color-neutral-50);
+}
+
+/* ============================================================
+   Footer block layout (multi-column)
+   ============================================================ */
+footer .footer > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-big);
+  max-width: 1264px;
+  margin: 0 auto;
+  padding: var(--spacing-xlarge) var(--spacing-medium);
+}
+
+@media (min-width: 600px) {
+  footer .footer > div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  footer .footer > div {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: var(--spacing-xlarge) var(--spacing-big);
   }
 }

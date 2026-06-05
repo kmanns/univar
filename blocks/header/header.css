@@ -154,11 +154,11 @@ header nav .nav-brand a {
   font: var(--type-headline-1-font);
   letter-spacing: var(--type-headline-1-letter-spacing);
   font-weight: bold;
-  color: var(--color-univar-blue);
+  color: var(--color-univar-body, #24282a);
 }
 
 header nav .nav-sections ul li a:hover {
-  color: var(--color-univar-blue);
+  color: var(--color-univar-orange, #e87200);
 }
 
 li.nav-drop img {

@@ -6,49 +6,50 @@
 .hero {
   position: relative;
   padding: 60px 24px;
-  min-height: 300px;
-  background-color: var(--color-univar-blue, #00438c);
+  min-height: 200px;
+  background-color: #1a1a1a;
   color: var(--color-neutral-50);
 }
 
 .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 900px;
+  margin: 0 auto var(--spacing-medium);
   color: var(--color-neutral-50);
   font: var(--type-display-2-font);
   letter-spacing: var(--type-display-2-letter-spacing);
+  text-align: center;
 }
 
 .hero h2,
 .hero h3 {
   color: var(--color-neutral-50);
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
 }
 
 .hero p {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: rgb(255 255 255 / 85%);
+  max-width: 700px;
+  margin: 0 auto var(--spacing-medium);
+  color: rgb(255 255 255 / 80%);
+  text-align: center;
 }
 
 .hero a.button {
-  background-color: var(--color-univar-green, #00b140);
-  border-color: var(--color-univar-green, #00b140);
+  display: inline-block;
+  background-color: var(--color-univar-orange, #e87200);
+  border-color: var(--color-univar-orange, #e87200);
   color: var(--color-neutral-50);
   font-weight: 600;
-  padding: 12px 32px;
-  border-radius: 4px;
+  padding: 14px 40px;
+  border-radius: 2px;
+  font-size: 1.6rem;
 }
 
 .hero a.button:hover {
-  background-color: #009933;
-  border-color: #009933;
+  background-color: var(--color-univar-orange-dark, #c46000);
+  border-color: var(--color-univar-orange-dark, #c46000);
 }
 
+/* With background image */
 .hero picture {
   position: absolute;
   z-index: 0;
@@ -57,7 +58,7 @@
   box-sizing: border-box;
 }
 
-.hero picture + * {
+.hero picture ~ * {
   position: relative;
   z-index: 1;
 }
@@ -68,9 +69,22 @@
   height: 100%;
 }
 
+/* Center the content vertically when there's a background image */
+.hero > div {
+  position: relative;
+  z-index: 1;
+  max-width: 1264px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 @media (min-width: 900px) {
   .hero {
     padding: 80px 32px;
-    min-height: 400px;
+    min-height: 280px;
   }
 }

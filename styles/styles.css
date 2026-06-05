@@ -13,10 +13,20 @@
 /* stylelint-disable no-empty-source */
 :root, .dropin-design {
   /* Adobe Commerce Dropin design tokens */
-  --color-brand-300: #4a87c0;
-  --color-brand-500: #00438c;
-  --color-brand-600: #003a7a;
-  --color-brand-700: #002d62;
+  /* Univar Solutions brand colors — primary orange theme */
+  --color-univar-orange: #e87200;
+  --color-univar-orange-dark: #c46000;
+  --color-univar-orange-light: #f5a54a;
+  --color-univar-gray-dark: #333333;
+  --color-univar-gray-medium: #6e716e;
+  --color-univar-gray-utility: #6e716e;
+  --color-univar-body: #24282a;
+  --color-univar-white: #ffffff;
+
+  --color-brand-300: #f5a54a;
+  --color-brand-500: #e87200;
+  --color-brand-600: #c46000;
+  --color-brand-700: #9e4d00;
   --color-neutral-50: #fff;
   --color-neutral-100: #fafafa;
   --color-neutral-200: #f5f5f5;
@@ -40,16 +50,9 @@
   --color-alert-500: #db7070;
   --color-alert-800: #c35050;
 
-  /* Univar Solutions brand colors */
-  --color-univar-blue: #00438c;
-  --color-univar-green: #00b140;
-  --color-univar-light-blue: #0070c0;
-  --color-univar-dark: #231f20;
-  --color-univar-navy: #002d62;
-
-  --color-button-active: var(--color-brand-700);
+  --color-button-active: var(--color-univar-orange-dark);
   --color-button-focus: var(--color-neutral-400);
-  --color-button-hover: var(--color-brand-600);
+  --color-button-hover: var(--color-univar-orange-dark);
   --color-action-button-active: var(--color-neutral-50);
   --color-action-button-hover: var(--color-neutral-300);
   --color-opacity-16: rgb(255 255 255 / 16%);
