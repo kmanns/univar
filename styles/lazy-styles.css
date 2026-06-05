@@ -1,1 +1,51 @@
 /* add global styles that can be loaded post LCP here */
+
+/* Univar Solutions - Lazy loaded styles */
+
+/* Hero banner - Univar blue background */
+.section.hero-banner {
+  background-color: var(--color-univar-blue);
+  color: var(--color-neutral-50);
+}
+
+.section.hero-banner h1,
+.section.hero-banner h2 {
+  color: var(--color-neutral-50);
+}
+
+/* Section heading styles */
+main h2 {
+  color: var(--color-univar-blue);
+}
+
+/* Button overrides for Univar brand */
+a.button.primary,
+button.primary {
+  background-color: var(--color-univar-blue);
+  border-color: var(--color-univar-blue);
+}
+
+a.button.primary:hover,
+button.primary:hover {
+  background-color: var(--color-univar-navy);
+  border-color: var(--color-univar-navy);
+}
+
+/* Footer section background */
+footer .footer {
+  background-color: var(--color-univar-navy);
+  color: var(--color-neutral-300);
+}
+
+footer .footer h2,
+footer .footer h3 {
+  color: var(--color-neutral-50);
+}
+
+footer .footer a {
+  color: var(--color-neutral-400);
+}
+
+footer .footer a:hover {
+  color: var(--color-neutral-50);
+}
