@@ -49,3 +49,36 @@ footer .footer a {
 footer .footer a:hover {
   color: var(--color-neutral-50);
 }
+
+/* Category section */
+.section.category-section {
+  background-color: var(--color-neutral-100);
+  padding: var(--spacing-big) 0;
+}
+
+/* Industries section */
+.section.industries-section {
+  padding: var(--spacing-large) 0;
+}
+
+.section.industries-section h2 {
+  text-align: center;
+  font: var(--type-display-3-font);
+  letter-spacing: var(--type-display-3-letter-spacing);
+  color: var(--color-univar-blue);
+  margin-bottom: var(--spacing-big);
+}
+
+/* Sustainability section */
+.section.sustainability-section {
+  background-color: var(--color-neutral-100);
+}
+
+/* Nav - Univar sticky header */
+@media (min-width: 900px) {
+  header .nav-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+}

@@ -5,23 +5,61 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
+  padding: 60px 24px;
   min-height: 300px;
+  background-color: var(--color-univar-blue, #00438c);
+  color: var(--color-neutral-50);
 }
 
 .hero h1 {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  color: var(--background-color);
+  color: var(--color-neutral-50);
+  font: var(--type-display-2-font);
+  letter-spacing: var(--type-display-2-letter-spacing);
+}
+
+.hero h2,
+.hero h3 {
+  color: var(--color-neutral-50);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero p {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(255 255 255 / 85%);
+}
+
+.hero a.button {
+  background-color: var(--color-univar-green, #00b140);
+  border-color: var(--color-univar-green, #00b140);
+  color: var(--color-neutral-50);
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 4px;
+}
+
+.hero a.button:hover {
+  background-color: #009933;
+  border-color: #009933;
 }
 
 .hero picture {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
   object-fit: cover;
   box-sizing: border-box;
+}
+
+.hero picture + * {
+  position: relative;
+  z-index: 1;
 }
 
 .hero img {
@@ -32,6 +70,7 @@
 
 @media (min-width: 900px) {
   .hero {
-    padding: 40px 32px;
+    padding: 80px 32px;
+    min-height: 400px;
   }
 }
