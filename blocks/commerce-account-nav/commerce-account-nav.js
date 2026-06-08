@@ -21,33 +21,15 @@ export default async function decorate(block) {
     permission: Math.max(0, keys.indexOf('permission') + 1),
   };
 
-  /** Get permissions */
-  events.on('auth/permissions', (permissions) => {
-    /** Clear nav */
+  function populateNav(permissions) {
     $nav.innerHTML = '';
 
-    /** Create items */
     $items.forEach(($item) => {
-      /**
-       * Permissions
-       * Skip rendering if the user lacks permission for this item.
-       * Default permission is 'all'.
-       * Note: permissions can be explicitly set to false (disabled feature),
-       * which should hide the item even for admins.
-       */
       const permission = $item.querySelector(`:scope > div:nth-child(${rows.permission})`)?.textContent?.trim() || 'all';
 
-      // Skip if permission is explicitly disabled (false)
-      if (permissions[permission] === false) {
-        return;
-      }
+      if (permissions[permission] === false) return;
+      if (!permissions.admin && !permissions[permission]) return;
 
-      // Skip if the user is not an admin and permission is not granted
-      if (!permissions.admin && !permissions[permission]) {
-        return;
-      }
-
-      /** Template */
       const template = document.createRange().createContextualFragment(`
         <a class="commerce-account-nav__item">
           <span class="commerce-account-nav__item__icon"></span>
@@ -62,33 +44,49 @@ export default async function decorate(block) {
       const $title = template.querySelector('.commerce-account-nav__item__title');
       const $description = template.querySelector('.commerce-account-nav__item__description');
 
-      /** Content */
       const $content = $item.querySelector(`:scope > div:nth-child(${rows.label})`)?.children;
 
-      /** Link */
       const link = $content[0]?.querySelector('a')?.href;
       const isActive = link && new URL(link).pathname === window.location.pathname;
       $link.classList.toggle('commerce-account-nav__item--active', isActive);
       $link.href = link;
 
-      /** Icon */
       const icon = $item.querySelector(`:scope > div:nth-child(${rows.icon})`)?.textContent?.trim();
-
       if (icon) {
         $link.classList.add('commerce-account-nav__item--has-icon');
         UI.render(Icon, { source: icon, size: 24 })($icon);
       }
 
-      /** Title */
       $title.textContent = $content[0]?.textContent || '';
-
-      /** Description */
       $description.textContent = $content[1]?.textContent || '';
 
-      /** Add link to nav */
       $nav.appendChild($link);
     });
+  }
+
+  events.on('auth/permissions', (permissions) => {
+    populateNav(permissions);
   }, { eager: true });
 
   block.replaceWith($nav);
+
+  // Fallback: if nav is still empty 100ms after decoration, fetch permissions directly.
+  // Handles race conditions where auth/permissions fires before this block is decorated.
+  setTimeout(async () => {
+    if ($nav.children.length > 0) return;
+
+    try {
+      const isAuthenticated = events.lastPayload('authenticated');
+      if (!isAuthenticated) return;
+
+      const { getCustomerRolePermissions } = await import('@dropins/storefront-auth/api.js');
+      const permissions = await getCustomerRolePermissions();
+      if ($nav.children.length === 0 && permissions) {
+        populateNav(permissions);
+      }
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.warn('commerce-account-nav: fallback permissions fetch failed', e);
+    }
+  }, 100);
 }

@@ -94,7 +94,7 @@ header .nav-wrapper {
 
 /* Brand area: dark background like the reference header row */
 header nav .nav-brand {
-  background-color: #000;
+  background-color: transparent;
   padding: 12px 0;
 }
 

@@ -147,7 +147,7 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 /* brand — dark row matching Univar reference header */
 header nav .nav-brand {
   min-width: 128px;
-  background-color: #000;
+  background-color: transparent;
   padding: 10px 0;
   display: flex;
   align-items: center;
@@ -182,11 +182,10 @@ li.nav-drop img {
 
 /* Logo image in nav brand */
 header nav .nav-brand img {
-  max-height: 36px;
+  max-height: 40px;
+  max-width: 160px;
   width: auto;
   display: block;
-  /* invert logo to white on dark bg */
-  filter: brightness(0) invert(1);
 }
 
 /* sections */
@@ -355,6 +354,11 @@ header nav .nav-tools {
   align-items: center;
   background: var(--background-color);
   z-index: 3;
+}
+
+/* Hide the raw nav-tools link list — these items are rendered via the Account dropdown */
+header nav .nav-tools .default-content-wrapper {
+  display: none;
 }
 
 header nav .nav-tools-wrapper>button {
