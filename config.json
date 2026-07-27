@@ -4,6 +4,7 @@
       "commerce-core-endpoint": "https://na1-sandbox.api.commerce.adobe.com/CWC1Z3dRYVnZ5UEFozgrDk/graphql",
       "commerce-endpoint": "https://na1-sandbox.api.commerce.adobe.com/CWC1Z3dRYVnZ5UEFozgrDk/graphql",
       "commerce-assets-enabled": true,
+      "commerce-b2b-enabled": true,
       "headers": {
         "all": {
           "Store": "unieng"
